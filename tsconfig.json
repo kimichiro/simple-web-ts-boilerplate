@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [
+      "dom"
+    ],
+    "allowJs": false,
+    "jsx": "react",
+    "sourceMap": true,
+    "removeComments": true,
+    "importHelpers": true,
+
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    /* Additional Checks */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Module Resolution Options */
+    "skipLibCheck": true,
+    "typeRoots": [
+        "./node_modules/@types",
+        "./types"
+    ],
+    "esModuleInterop": true,
+
+    /* Advanced Options */
+    "forceConsistentCasingInFileNames": true
+  }
+}
