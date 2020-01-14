@@ -5,26 +5,29 @@ import { absoluteFromRoot } from '../path'
 
 interface Bundle {
     name: string
+    path?: string
 }
 
-export const ts = (({ name }: Bundle): webpack.Configuration => ({
+const resolvePath = (({ name, path }: Bundle, filename: string) => `src/${path ? path : name}/${filename}`)
+
+export const ts = ((bundle: Bundle): webpack.Configuration => ({
     entry: {
-        [name]: absoluteFromRoot(`src/${name}/index.ts`),
+        [bundle.name]: absoluteFromRoot(resolvePath(bundle, 'index.ts')),
     },
 }))
 
-export const tsx = (({ name }: Bundle): webpack.Configuration => ({
+export const tsx = ((bundle: Bundle): webpack.Configuration => ({
     entry: {
-        [name]: absoluteFromRoot(`src/${name}/index.tsx`),
+        [bundle.name]: absoluteFromRoot(resolvePath(bundle, 'index.tsx')),
     },
 }))
 
-export const html = (({ name }: Bundle): webpack.Configuration => ({
+export const html = ((bundle: Bundle): webpack.Configuration => ({
     plugins: [
         new HtmlWebpackPlugin({
-            chunks: [name],
-            filename: `${name}.html`,
-            template: absoluteFromRoot(`src/${name}/index.html`),
+            chunks: [bundle.name],
+            filename: `${bundle.name}.html`,
+            template: absoluteFromRoot(resolvePath(bundle, 'index.html')),
         }),
     ],
 }))

@@ -1,8 +1,8 @@
 import { html, ts, tsx } from './functions'
 
 export const clientBundles = [
-    tsx({ name: 'main' }),
-    html({ name: 'main' }),
+    tsx({ name: 'main', path: 'client/main' }),
+    html({ name: 'main', path: 'client/main' }),
 ]
 
 export const serverBundles = [
