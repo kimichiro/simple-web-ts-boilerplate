@@ -41,7 +41,7 @@ const config: webpack.Configuration = {
     },
 
     resolve: {
-        extensions: ['.ts', '.tsx', '.html'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.html'],
     },
 
     target: 'web',

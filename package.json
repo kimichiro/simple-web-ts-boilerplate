@@ -14,6 +14,8 @@
     "build:server": "yarn build --build-bundles=server --mode=development",
     "build:server:dev": "yarn build:server --mode=development",
     "build:server:prod": "yarn build:server --mode=production",
+    "dev": "yarn dev:client",
+    "dev:client": "yarn build:client:dev --watch",
     "start": "node ./build/server/server.js"
   },
   "author": "",
