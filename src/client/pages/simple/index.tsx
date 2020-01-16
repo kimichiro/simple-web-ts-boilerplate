@@ -1,13 +1,13 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import Application from '../core/Application'
-import SimpleContainer from '../core/SimpleContainer'
+import { ReactApplication } from '../../core/ReactApplication'
+import { SimpleContainer } from '../../core/SimpleContainer'
 
-import Screen from '../components/Screen'
-import Portal from '../components/Portal'
+import Screen from '../../components/Screen'
+import Portal from '../../components/Portal'
 
-const application = new Application(new SimpleContainer())
+const application = new ReactApplication(new SimpleContainer())
 
 const appElement = document.getElementById('app')
 const clickEventHandler = ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -32,6 +32,8 @@ const X: React.FunctionComponent = (() => (
     </Screen>
 ))
 
-application.run(
-    <X />
-)
+application.run({
+    element: ((
+        <X />
+    )),
+})

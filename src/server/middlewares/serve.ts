@@ -11,7 +11,7 @@ export default ((app: Express, options: Options) => {
     } = options
 
     app.get('/', (_, res) => {
-        res.redirect('/main.html')
+        res.redirect('/simple.html')
     })
 
     app.get('*', (req, res) => {

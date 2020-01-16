@@ -1,8 +1,10 @@
-import Container from './Container'
+import { Container } from '.'
 
-class SimpleContainer implements Container {
+export class SimpleContainer extends Container {
     private readonly element: Element
     constructor() {
+        super()
+
         this.element = document.createElement('div')
     }
 
@@ -14,5 +16,3 @@ class SimpleContainer implements Container {
         return this.element
     }
 }
-
-export default SimpleContainer
