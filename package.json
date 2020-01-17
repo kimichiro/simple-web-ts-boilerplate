@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:all": "yarn build:server && yarn build:client",
-    "build:all:dev": "yarn build:server:dev && yarn build:client:dev",
-    "build:all:prod": "yarn build:server:prod && yarn build:client:prod",
+    "build:all": "yarn clean && yarn build:server && yarn build:client",
+    "build:all:dev": "yarn clean && yarn build:server:dev && yarn build:client:dev",
+    "build:all:prod": "yarn clean && yarn build:server:prod && yarn build:client:prod",
     "build": "webpack",
     "build:client": "yarn build --build-bundles=client --mode=development",
     "build:client:dev": "yarn build:client --mode=development",
@@ -14,6 +14,7 @@
     "build:server": "yarn build --build-bundles=server --mode=development",
     "build:server:dev": "yarn build:server --mode=development",
     "build:server:prod": "yarn build:server --mode=production",
+    "clean": "rimraf ./build",
     "dev": "yarn dev:client",
     "dev:client": "yarn build:client:dev --watch",
     "start": "node ./build/server/server.js"
@@ -43,6 +44,7 @@
     "express": "^4.17.1",
     "minimist": "^1.2.0",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "rimraf": "^3.0.0"
   }
 }
