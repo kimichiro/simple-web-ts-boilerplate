@@ -1,24 +1,25 @@
 import path from 'path'
 
-import { Express } from 'express'
+import { Router } from 'express'
 
 interface Options {
     path: string
 }
-export default ((app: Express, options: Options) => {
-    const {
-        path: runningPath,
-    } = options
-
-    app.get('/', (_, res) => {
+const middleware = (({ path: runningPath }: Options) => {
+    const router = Router()
+    
+    router.get('/', (_, res) => {
         res.redirect('/main.html')
     })
-
-    app.get('*', (req, res) => {
-        let requestPath = req.path
+    
+    router.get('*', (req, res) => {
+        const requestPath = req.path
         if (requestPath.startsWith('/')) {
-            requestPath = requestPath.substr(1)
+            res.sendFile(path.resolve(runningPath, requestPath.substr(1)))
         }
-        res.sendFile(path.resolve(runningPath, requestPath))
     })
-})
+
+    return router
+});
+
+export default middleware
